@@ -1,5 +1,9 @@
 import CustomError from "./custom-error.js";
+import ErrorHandler from "./error-handler.js";
 const errorHandler = (options) => {
+    const errorHandler = new ErrorHandler(options || {});
+    return errorHandler.handleError;
+    /*
     return (err, req, res, next) => { 
         // if development environment, by default log error. also log if asked
         if(options && ((options.isDevelopment && err.stack && options.log === undefined) || options.log === true)) {
@@ -28,6 +32,7 @@ const errorHandler = (options) => {
         // handle all other errors
         res.status(500).json({ message: err.message || "Something went wrong" });
     }
+    */
 }
 export { CustomError };
 export default errorHandler;
