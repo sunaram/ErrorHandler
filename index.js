@@ -8,7 +8,7 @@ const errorHandler = (options) => {
         // if errorTypes is passed for specific errors, handle them accordingly
         if(options && options.errorTypes && options.errorTypes[err.name]) {
             const statusCode = options.errorTypes[err.name].statusCode || 500;
-            const message = options.errorTypes[err.name].message || "Something went wrong";
+            const message = options.errorTypes[err.name].message || (err.message || "Something went wrong"); // default message is "Something went wrong";
             const logFunction = options.errorTypes[err.name].log || false;
             if(logFunction) {
                 logFunction(err);
