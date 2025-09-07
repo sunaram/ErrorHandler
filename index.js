@@ -1,7 +1,7 @@
 import CustomError from "./custom-error.js";
 const errorHandler = (options) => {
     return (err, req, res, next) => { 
-        if(options.isDevelopment && err.stack) {
+        if(options && options.isDevelopment && err.stack) {
             console.error(err.stack);
         }   
         if (err instanceof Error) {
