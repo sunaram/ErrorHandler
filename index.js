@@ -9,5 +9,5 @@ const errorHandler = (options) => {
         res.status(500).json({ message: err.message || "Something went wrong" });
     }
 }
-
+export { CustomError };
 export default errorHandler;
