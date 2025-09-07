@@ -4,7 +4,7 @@ const errorHandler = (options) => {
         if(options && options.isDevelopment && err.stack) {
             console.error(err.stack);
         }   
-        if (err instanceof Error) {
+        if (err instanceof CustomError) {
             return res.status(err.statusCode).json({ message: err.message });
         }             
         
