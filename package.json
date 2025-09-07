@@ -2,6 +2,7 @@
   "name": "@sunaram/error-handler",
   "version": "0.0.1",
   "description": "ExpressJS error handler",
+  "repository": "https://github.com/sunaram/ErrorHandler",
   "keywords": [
     "error",
     "handler"
