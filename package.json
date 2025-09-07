@@ -1,0 +1,16 @@
+{
+  "name": "@sunaram/error-handler",
+  "version": "0.0.1",
+  "description": "ExpressJS error handler",
+  "keywords": [
+    "error",
+    "handler"
+  ],
+  "license": "ISC",
+  "author": "Sunaram Patir",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
