@@ -39,7 +39,7 @@ Customize handling of specific errors
 ```js
 const errorTypes = {
     SequelizeDatabaseError: {
-        status: 500,
+        statusCode: 500,
         message: "Error Encountered",
         log: (err) => {
             console.error(err);
