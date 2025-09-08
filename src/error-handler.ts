@@ -1,10 +1,16 @@
+import CustomError from "./custom-error.js";
+import type { HandlerOptions } from "./types/handler.js";
+import type { Request, Response, NextFunction } from "express";
 class ErrorHandler {
-    constructor(options) {
+    errorTypes: any;
+    isDevelopment: boolean;
+    log: Function | boolean | undefined;
+    constructor(options: HandlerOptions) {
         this.errorTypes = options.errorTypes || {};
         this.isDevelopment = options.isDevelopment || false;
         this.log = options.log;
     }
-    handleLog(err) {
+    handleLog(err: Error) {
         if((this.isDevelopment && this.log === undefined) || this.log) {
             if(typeof this.log === "function") {
                 this.log(err);
@@ -14,11 +20,11 @@ class ErrorHandler {
         }
         
     }
-    printError(err) {
+    printError(err: Error) {
         console.error(err);
         console.error(err.stack);
     }
-    handleError(err, req, res, next) {
+    handleError(err: Error, _req: Request, res: Response, _next: NextFunction) {
         // check if the error belongs to a specific error type
         if(this.errorTypes && this.errorTypes[err.name]) {
             const statusCode = this.errorTypes[err.name].statusCode || 500;
@@ -29,6 +35,9 @@ class ErrorHandler {
                 } else {
                     this.printError(err);
                 }
+            } else {
+                // log error if development environment 
+                this.handleLog(err);
             }
             return res.status(statusCode).json({ message });
         } 
@@ -40,7 +49,7 @@ class ErrorHandler {
         if (err instanceof CustomError) {
             const returnObj = {
                 message: err.message,                
-            }
+            } as any;
             if(this.isDevelopment) {
                 returnObj.error = err.error;
             }
