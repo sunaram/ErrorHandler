@@ -7,10 +7,11 @@
     "error",
     "handler"
   ],
-  "license": "ISC",
+  "license": "MIT",
   "author": "Sunaram Patir",
   "type": "module",
-  "main": "dist/index.js",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "scripts": {
     "build": "tsc"
   },
