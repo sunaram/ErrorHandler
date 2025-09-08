@@ -75,6 +75,17 @@ return (req, res, next) => {
 
 **isDevelopment**: boolean (default: false)  
 **errorTypes**: object (default: {})  
+&nbsp;&nbsp;&nbsp;&nbsp;**key**: error name  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;```e.g. SequelizeDatabaseError```  
+&nbsp;&nbsp;&nbsp;&nbsp;**value**: object with statusCode, message and log function  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;```e.g. {
+            statusCode: 500,
+            message: "Error Encountered",
+            log: (err) => {
+                console.error(err);
+                console.error(err.stack);
+            }
+        } ```  
 **log**: function | boolean | undefined (default: undefined)  
 
 
