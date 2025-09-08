@@ -56,7 +56,7 @@ class ErrorHandler {
             return res.status(err.statusCode).json(returnObj);
         }
         // handle all other errors
-        res.status(500).json({ message: err.message || "Something went wrong" });
+        res.status(500).json({ message: this.isDevelopment ? (err.message || "Something went wrong") : "Something went wrong" });
     }
 }
 
